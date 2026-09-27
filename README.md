@@ -30,14 +30,14 @@ ResumeGuide is a web-based AI Resume Analyzer built using Python and Flask. It a
 ## Project Structure
 
 ResumeGuide/
-├── app.py
-├── requirements.txt
-├── templates/
-│   ├── index.html
-│   └── result.html
-├── static/
-│   └── style.css
-└── uploads/
+- app.py
+- requirements.txt
+- templates/
+  - index.html
+  - result.html
+- static/
+  - style.css
+- uploads/
 
 ## Installation
 
