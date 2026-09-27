@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResumeGuide - Analysis</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ResumeGuide</div>
+        <div class="nav-text">Analysis Dashboard</div>
+    </nav>
+
+
+    <main class="dashboard">
+
+        <div class="dashboard-header">
+            <div>
+                <p class="small-title">RESUME ANALYSIS</p>
+                <h1>Your Resume Report</h1>
+            </div>
+
+            <a href="/" class="back-btn">← Analyze Another</a>
+        </div>
+
+
+        <section class="score-section">
+
+            <div class="score-circle">
+                <div class="score-number">{{ score }}</div>
+                <div class="score-label">/ 100</div>
+            </div>
+
+            <div class="score-content">
+                <h2>Resume Score</h2>
+
+                {% if score >= 80 %}
+                    <p class="score-good">Strong Match</p>
+                    <p>Your resume contains many relevant skills.</p>
+                {% elif score >= 50 %}
+                    <p class="score-medium">Good Start</p>
+                    <p>Your resume has some relevant skills, but there is room for improvement.</p>
+                {% else %}
+                    <p class="score-low">Needs Improvement</p>
+                    <p>Consider adding more relevant skills and keywords.</p>
+                {% endif %}
+            </div>
+
+        </section>
+
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <span>🎯</span>
+                <h3>{{ resume_skills|length }}</h3>
+                <p>Skills Found</p>
+            </div>
+
+            <div class="stat-card">
+                <span>✅</span>
+                <h3>{{ matching_skills|length }}</h3>
+                <p>Matching Skills</p>
+            </div>
+
+            <div class="stat-card">
+                <span>⚠️</span>
+                <h3>{{ missing_skills|length }}</h3>
+                <p>Missing Skills</p>
+            </div>
+
+            <div class="stat-card">
+                <span>📌</span>
+                <h3>{{ job_skills|length }}</h3>
+                <p>Job Keywords</p>
+            </div>
+
+        </section>
+
+
+        <section class="analysis-grid">
+
+            <div class="analysis-card">
+
+                <h2>Skills Found</h2>
+
+                <div class="tags">
+
+                    {% for skill in resume_skills %}
+                        <span class="tag found">{{ skill }}</span>
+                    {% else %}
+                        <p>No common skills detected.</p>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <div class="analysis-card">
+
+                <h2>Matching Skills</h2>
+
+                <div class="tags">
+
+                    {% for skill in matching_skills %}
+                        <span class="tag matching">{{ skill }}</span>
+                    {% else %}
+                        <p>No matching skills detected.</p>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <div class="analysis-card">
+
+                <h2>Missing Skills</h2>
+
+                <div class="tags">
+
+                    {% for skill in missing_skills %}
+                        <span class="tag missing">{{ skill }}</span>
+                    {% else %}
+                        <p>No major missing keywords detected.</p>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <div class="analysis-card recommendations">
+
+                <h2>💡 Improvement Recommendations</h2>
+
+                <ul>
+
+                    {% for recommendation in recommendations %}
+                        <li>{{ recommendation }}</li>
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 ResumeGuide | AI Resume Analyzer</p>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

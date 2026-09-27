@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>ResumeGuide - AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ResumeGuide</div>
+        <div class="nav-text">AI Resume Analyzer</div>
+    </nav>
+
+    <main class="hero">
+
+        <section class="hero-text">
+            <p class="small-title">SMART RESUME ANALYSIS</p>
+
+            <h1>
+                Make your resume
+                <span>job-ready.</span>
+            </h1>
+
+            <p>
+                Upload your resume and compare it with a job description
+                to discover your skills, missing keywords and areas for improvement.
+            </p>
+        </section>
+
+
+        <section class="upload-card">
+
+            <h2>Analyze Your Resume</h2>
+
+            <p class="card-description">
+                Upload your PDF or DOCX resume and enter the job description.
+            </p>
+
+            <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+                <label class="upload-box">
+                    <input
+                        type="file"
+                        name="resume"
+                        accept=".pdf,.docx"
+                        required
+                        onchange="showFileName(this)"
+                    >
+
+                    <div class="upload-icon">📄</div>
+
+                    <strong>Choose Resume</strong>
+
+                    <span id="file-name">
+                        PDF or DOCX format
+                    </span>
+                </label>
+
+
+                <label class="input-label">
+                    Job Description
+                </label>
+
+                <textarea
+                    name="job_description"
+                    placeholder="Paste the job description here..."
+                    rows="7"
+                ></textarea>
+
+
+                <button type="submit" class="analyze-btn">
+                    Analyze Resume →
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <section class="features">
+
+        <div class="feature-card">
+            <div>📊</div>
+            <h3>Resume Score</h3>
+            <p>Get a simple score based on relevant skills.</p>
+        </div>
+
+        <div class="feature-card">
+            <div>🔎</div>
+            <h3>Skill Analysis</h3>
+            <p>Identify skills found and missing from your resume.</p>
+        </div>
+
+        <div class="feature-card">
+            <div>💡</div>
+            <h3>Smart Suggestions</h3>
+            <p>Get useful recommendations to improve your resume.</p>
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>© 2026 ResumeGuide | AI Resume Analyzer</p>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
